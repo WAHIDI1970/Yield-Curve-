@@ -30,7 +30,8 @@ if uploaded_file is not None:
 
     # Maturité en jours
     df["maturite_en_jours"] = df["Echeance"].apply(
-        lambda x: max((datetime.strptime(x, "%d/%m/%Y") - date_base).days, 1)
+        lambda x: max((datetime.strptime(x, "%d/%m/%Y") - date_base).days,0)
+    
     )
 
     # Maturité en années
@@ -98,6 +99,7 @@ if uploaded_file is not None:
 
 else:
     st.info("Veuillez importer un fichier CSV contenant les colonnes 'Echeance', 'Taux moyen pondéré' et 'Date'.")
+    
 
 
 
