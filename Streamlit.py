@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from datetime import datetime
+from scipy.interpolate import interp1d
 
 st.set_page_config(page_title="Calcul Taux - Courbe BAM", layout="wide")
 
@@ -31,7 +32,6 @@ if uploaded_file is not None:
     # Maturité en jours
     df["maturite_en_jours"] = df["Echeance"].apply(
         lambda x: max((datetime.strptime(x, "%d/%m/%Y") - date_base).days,1)
-    
     )
 
     # Maturité en années
@@ -92,6 +92,19 @@ if uploaded_file is not None:
         "Taux actuariel (%)",
         "Taux zero coupon (%)"
     ]], use_container_width=True)
+
+    # Interpolation pour date personnalisée
+    st.subheader("🔍 Interpolation du taux pour une nouvelle échéance")
+    date_user = st.date_input("Sélectionnez une nouvelle date d'échéance")
+
+    if date_user:
+        delta = (date_user - date_base).days
+        maturity_user = delta / 365
+
+        interpolation_func = interp1d(df["maturite_en_ans"], df["Taux zero coupon"], kind='linear', fill_value="extrapolate")
+        taux_interpole = interpolation_func(maturity_user) * 100
+
+        st.markdown(f"**Taux zéro coupon interpolé pour la maturité de {maturity_user:.2f} ans : {taux_interpole:.3f}%**")
 
     # Option de téléchargement
     csv = df.to_csv(index=False).encode('utf-8')
