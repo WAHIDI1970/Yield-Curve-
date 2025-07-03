@@ -24,7 +24,7 @@ if uploaded_file is not None:
 
     # Date de base = date de la première ligne
     try:
-        date_base = datetime.strptime(df['Date'].iloc[0], "%d/%m/%Y")
+        date_base = datetime.strptime(df['Date'].iloc[0], "%d/%m/%Y")df["Echeance"][0]
     except:
         date_base = datetime.today()
 
