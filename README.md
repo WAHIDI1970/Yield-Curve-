@@ -1,5 +1,5 @@
 # Yield-Curve_YTM:🏦🏦
-## 📈 Application Streamlit - Calcul des Taux BAM
+## 📈 Application Streamlit - Calcul des Taux YTM et ZC (BAM):
 
 Cette application permet :
 - d'importer un fichier CSV des taux BAM,
