@@ -1,5 +1,5 @@
-## Yield-Curve
-# 📈 Application Streamlit - Calcul des Taux BAM
+# Yield-Curve_YTM:🏦🏦
+## 📈 Application Streamlit - Calcul des Taux BAM
 
 Cette application permet :
 - d'importer un fichier CSV des taux BAM,
@@ -9,8 +9,3 @@ Cette application permet :
   - le taux zéro coupon,
   - un taux interpolé pour une date cible.
 
-## ▶️ Lancer en local
-
-```bash
-pip install -r requirements.txt
-streamlit run Streamlit.py
