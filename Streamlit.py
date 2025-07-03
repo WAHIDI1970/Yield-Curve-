@@ -30,7 +30,7 @@ if uploaded_file is not None:
 
     # Maturité en jours
     df["maturite_en_jours"] = df["Echeance"].apply(
-        lambda x: max((datetime.strptime(x, "%d/%m/%Y") - date_base).days,0)
+        lambda x: max((datetime.strptime(x, "%d/%m/%Y") - date_base).days,0.0001)
     
     )
 
