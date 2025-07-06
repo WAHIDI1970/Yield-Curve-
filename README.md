@@ -1,11 +1,19 @@
 # Yield-Curve_YTM:🏦🏦
 ## 📈 Construxction de la courbe des taux - Calcul des Taux YTM et ZC (BAM):
 
-Cette application permet :
-- d'importer un fichier CSV des taux BAM,
-- de calculer automatiquement :
-  - la maturité (jours et années),
-  - le taux actuariel,
-  - le taux zéro coupon,
-  - un taux interpolé pour une date cible.
+✅ Fonctionnalités financières
+
+📤 Upload dynamique de courbe BAM.
+
+📊 Calcul actuariel en fonction de la maturité.
+
+🧮 Bootstraping / interpolation spline pour taux zéro coupon.
+
+📈 Graphiques interactifs (Plotly).
+
+📉 Export possible des courbes (CSV / PNG).
+
+🧩 Simulation de shift de courbe (+10 bps, flattening, etc.).
+
+
 
