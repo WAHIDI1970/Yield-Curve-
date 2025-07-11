@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>📈 Courbes BAM - ZC & Forwards</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #f9f9fb; }
+    .card { border-radius: 1rem; box-shadow: 0 4px 8px rgba(0,0,0,0.05); }
+    .plotly-graph-div { width: 100% !important; height: auto !important; }
+    footer { font-size: 0.9rem; color: #777; margin-top: 2rem; }
+    .btn { white-space: nowrap; }
+  </style>
+</head>
+<body>
+  <div class="container py-4">
+
+    <!-- Titre principal -->
+    <div class="text-center mb-4">
+      <h2 class="fw-bold">📊 Analyse des Courbes de Taux (BAM)</h2>
+      <p class="text-muted">📅 Données du : <strong>{{ last_date }}</strong> (Mode : {{ last_mode }})</p>
+    </div>
+
+    <!-- Messages d'erreur ou succès -->
+    {% if error %}
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ error }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+    {% elif has_data %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        ✅ Données chargées avec succès.
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+    {% endif %}
+
+    <!-- Formulaire -->
+    <div class="card p-4 mb-4">
+      <form method="POST" enctype="multipart/form-data">
+        <div class="row g-3">
+          <div class="col-md-4">
+            <label class="form-label">📥 Source :</label>
+            <select class="form-select" name="mode">
+              <option value="bam" {% if last_mode == 'bam' %}selected{% endif %}>BAM (automatique)</option>
+              <option value="upload" {% if last_mode == 'upload' %}selected{% endif %}>Fichier CSV (manuel)</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">📆 Date de la courbe :</label>
+            <input type="date" class="form-control" name="date_bam" value="{{ last_date }}">
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">📁 Fichier CSV :</label>
+            <input type="file" class="form-control" name="csv">
+          </div>
+        </div>
+
+        <div class="mt-4 d-flex flex-wrap gap-2">
+          <button type="submit" name="action" value="calculate_curves" class="btn btn-primary">🧮 Calculer les courbes</button>
+          <button type="submit" name="action" value="calculate_forwards" class="btn btn-secondary">📈 Taux Forwards</button>
+          <button type="submit" name="action" value="reset" class="btn btn-danger">🔄 Réinitialiser</button>
+        </div>
+
+        <!-- Interpolation -->
+        <div class="mt-4">
+          <label class="form-label">🔎 Interpolation par date :</label>
+          <div class="input-group">
+            <input type="date" name="target_date" class="form-control">
+            <button class="btn btn-info" type="submit" name="action" value="interpolate_date">Interpoler</button>
+          </div>
+        </div>
+      </form>
+
+      <!-- Résultat de l'interpolation -->
+      {% if interpolated_rate %}
+        <div class="alert alert-warning mt-3">
+          📍 Taux interpolé pour la date <strong>{{ interpolated_target }}</strong>
+          (maturité : {{ interpolated_maturity }} ans) :
+          <strong>{{ interpolated_rate }}%</strong>
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- Graphique ZC -->
+    {% if zc_chart %}
+      <div class="card mb-4 p-4">
+        <h5 class="mb-3">📉 Courbe des Taux Zéro Coupon</h5>
+        {{ zc_chart | safe }}
+      </div>
+    {% endif %}
+
+    <!-- Graphique Forwards -->
+    {% if forward_chart %}
+      <div class="card mb-4 p-4">
+        <h5 class="mb-3">📈 Courbe des Taux Forwards</h5>
+        {{ forward_chart | safe }}
+      </div>
+    {% endif %}
+
+    <!-- Tableau ZC -->
+    {% if df_table %}
+      <div class="card mb-4 p-4">
+        <h5 class="mb-3">📊 Données Zéro Coupon</h5>
+        <div class="table-responsive">
+          {{ df_table | safe }}
+        </div>
+      </div>
+    {% endif %}
+
+    <!-- Tableau Forwards -->
+    {% if df_fw_table %}
+      <div class="card mb-4 p-4">
+        <h5 class="mb-3">📊 Taux Forwards</h5>
+        <div class="table-responsive">
+          {{ df_fw_table | safe }}
+        </div>
+      </div>
+    {% endif %}
+
+    <!-- Footer -->
+    <footer class="text-center">
+      <hr>
+      <p>💻 Application Flask & Plotly pour l’analyse des courbes BAM • 2025</p>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
