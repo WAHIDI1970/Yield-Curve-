@@ -35,7 +35,7 @@ yield-curve-analyzer/
        ├── interpolation.py       # Interpolation spline/linéaire
        └── forward.py             # Calculs des taux forwards
 
-📈 Exemple de visualisation :
+##📈 Exemple de visualisation :
 Voici un aperçu du dashboard :
 
 <img width="959" height="437" alt="image" src="https://github.com/user-attachments/assets/dfc1ab4c-178d-413e-b24e-6e251804a27c" />
