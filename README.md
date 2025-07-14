@@ -1,19 +1,40 @@
-# Yield-Curve_YTM:🏦🏦
-## 📈 Construxction de la courbe des taux - Calcul des Taux YTM et ZC (BAM):
+# 📈 Yield Curve Analyzer – BAM Curve Dashboard
 
-✅ Fonctionnalités financières
+Ce projet est un **dashboard interactif** pour l'analyse et le calcul des **taux actuariels**, **taux zéro coupon**, et **taux forward** à partir des courbes de taux publiées par la **Banque Al-Maghrib (BAM)**. Il est conçu pour les analystes financiers, ingénieurs quantitatifs, chercheurs ou toute personne intéressée par la modélisation des courbes de taux.
 
-📤 Upload dynamique de courbe BAM.
+## 🧰 Fonctionnalités principales
 
-📊 Calcul actuariel en fonction de la maturité.
+- 📥 Importation de courbes BAM au format CSV
+- 📊 Visualisation interactive des courbes (Plotly)
+- 🧮 Calcul des taux actuariels
+- 🪙 Bootstrap des taux zéro coupon
+- ⏩ Calcul des taux forwards pour différentes maturités
+- 🧩 Interpolation personnalisée d’échéance
+- 🧑‍💻 Interface web professionnelle (Flask/Streamlit)
+- 🐳 Dockerisation pour déploiement simple
 
-🧮 Bootstraping / interpolation spline pour taux zéro coupon.
+## 📂 Structure du projet
 
-📈 Graphiques interactifs (Plotly).
+```bash
+yield-curve-analyzer/
+│
+├── app.py                     # Point d'entrée principal (Flask ou Streamlit)
+├── requirements.txt           # Dépendances Python
+├── Dockerfile                 # Image Docker (si utilisé)
+├── README.md                  # Fichier de documentation
+├── static/                    # Fichiers CSS, JS, images
+├── templates/                 # Layout HTML (Flask)
+│
+├── data/                      # Données d’entrée (CSV BAM)
+├── output/                    # Résultats calculés/exportés
+│
+└── app/src/                       # Modules Python
+       ├── io_bam.py              # Importation et nettoyage des données BAM
+       ├── dates.py               # Gestion des échéances et maturités
+       ├── bootstrap.py           # Calcul des taux actuariels et ZC
+       ├── interpolation.py       # Interpolation spline/linéaire
+       └── forward.py             # Calculs des taux forwards
 
-📉 Export possible des courbes (CSV / PNG).
-
-🧩 Simulation de shift de courbe (+10 bps, flattening, etc.).
 <img width="944" height="430" alt="image" src="https://github.com/user-attachments/assets/c2933b7c-b083-4728-97b9-041176d02d93" />
 
 <img width="794" height="422" alt="image" src="https://github.com/user-attachments/assets/dcb533f9-da06-4306-a54b-70af8f2c053f" />
