@@ -14,7 +14,7 @@
 📉 Export possible des courbes (CSV / PNG).
 
 🧩 Simulation de shift de courbe (+10 bps, flattening, etc.).
-![Uploading image.png…]()
+<img width="944" height="430" alt="image" src="https://github.com/user-attachments/assets/c2933b7c-b083-4728-97b9-041176d02d93" />
 
 
 
