@@ -34,6 +34,7 @@ yield-curve-analyzer/
        ├── bootstrap.py           # Calcul des taux actuariels et ZC
        ├── interpolation.py       # Interpolation spline/linéaire
        └── forward.py             # Calculs des taux forwards
+```
 
 ##📈 Exemple de visualisation :
 Voici un aperçu du dashboard :
@@ -43,7 +44,7 @@ Voici un aperçu du dashboard :
 <img width="959" height="437" alt="image" src="https://github.com/user-attachments/assets/3862a5ba-90cf-4e23-9639-9f1b212f5bbb" />
 <img width="953" height="161" alt="image" src="https://github.com/user-attachments/assets/09c57783-2b94-445f-97e0-541e18f1f9cf" />
 
-```
+
 
 
 
