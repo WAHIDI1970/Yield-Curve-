@@ -10,7 +10,7 @@ Ce projet est un **dashboard interactif** pour l'analyse et le calcul des **taux
 - 🪙 Bootstrap des taux zéro coupon
 - ⏩ Calcul des taux forwards pour différentes maturités
 - 🧩 Interpolation personnalisée d’échéance
-- 🧑‍💻 Interface web professionnelle (Flask/Streamlit)
+- 🧑‍💻 Interface web professionnelle (Flask)
 - 🐳 Dockerisation pour déploiement simple
 
 ## 📂 Structure du projet
